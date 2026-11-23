@@ -75,3 +75,6 @@ taskflow/
 - Database row-level security limits access to the signed-in user's tasks.
 - No payment system is included.
 - Supabase credentials are **not** included in this zip; provide your own public project URL and publishable key.
+
+## Existing database: permission denied for table tasks
+Run `supabase/fix_permissions.sql` in the **TaskFlow project's** SQL Editor (not UtilityTrack). Confirm `rls_enabled = true` and that four own-user policies exist. Sign in again and test task CRUD. This fix grants table access to authenticated users while RLS still enforces row ownership.
